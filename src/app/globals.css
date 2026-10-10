@@ -1,0 +1,503 @@
+@import "tailwindcss";
+
+/* Nexa font family declarations */
+@font-face {
+  font-family: 'Nexa';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local('Nexa Light'), local('Nexa-Light'), url('https://fonts.cdnfonts.com/s/19227/Fontfabric - Nexa-Light.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Nexa';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: local('Nexa Bold'), local('Nexa-Bold'), url('https://fonts.cdnfonts.com/s/19227/Fontfabric - Nexa-Bold.woff') format('woff');
+}
+
+@theme {
+  /* Type — Nexa (display/headers) + Manrope (body) */
+  --font-display: "Nexa", sans-serif;
+  --font-body: var(--font-manrope), ui-sans-serif, "Segoe UI", sans-serif;
+
+  /* Brand palette matched to reference identity:
+     ice      #B7DBFF — ice sky blue accent & soft surface tint
+     royal    #000099 — signature electric royal / cobalt blue
+     flame    #FF6600 — signature vibrant electric orange for CTAs + attention
+     ink      #080D2B — deep midnight navy / cobalt for high-contrast typography
+     ink-deep #020517 — deep midnight obsidian base
+     sky      #EDF4FC — clean ice-tinted background canvas
+     sky-soft #F5F9FE — soft tinted surface
+     sky-tint #FFFFFF — crisp white surface */
+  --color-ice: #b7dbff;
+  --color-ice-soft: #e3effd;
+  --color-ice-tint: #f0f6ff;
+  --color-royal: #000099;
+  --color-royal-deep: #000066;
+  --color-royal-light: #2e44ff;
+  --color-flame: #ff6600;
+  --color-flame-deep: #e55a00;
+  --color-flame-hover: #ff771a;
+  --color-ink: #080d2b;
+  --color-ink-deep: #020517;
+  --color-sky: #edf4fc;
+  --color-sky-soft: #f5f9fe;
+  --color-sky-tint: #ffffff;
+  --color-cloud: #ffffff;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #edf4fc;
+    color: #080d2b;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    /* Clean ice-tinted canvas */
+    background-color: #edf4fc;
+    color: #080d2b;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Nexa', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+  }
+
+  ::selection {
+    background-color: #ff6600;
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 3px solid #ff6600;
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+}
+
+@layer components {
+  /* ---- Scroll trays ---- */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* ---- Surfaces ---- */
+  .card {
+    background-color: #ffffff;
+    background-image: 
+      radial-gradient(circle at 100% 0%, rgba(183, 219, 255, 0.22) 0%, transparent 60%),
+      radial-gradient(circle at 0% 100%, rgba(0, 0, 153, 0.03) 0%, transparent 60%);
+    border: 1px solid rgba(0, 0, 153, 0.08);
+    border-radius: 22px;
+    box-shadow:
+      0 1px 2px rgba(8, 13, 43, 0.02),
+      0 4px 8px rgba(8, 13, 43, 0.03),
+      0 12px 24px rgba(8, 13, 43, 0.04);
+    transition:
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.4s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-2px);
+    border-color: rgba(0, 0, 153, 0.18);
+    box-shadow:
+      0 2px 4px rgba(8, 13, 43, 0.04),
+      0 8px 16px rgba(8, 13, 43, 0.05),
+      0 24px 48px rgba(8, 13, 43, 0.07);
+  }
+
+  /* Emphasized card — inspired by Royal Blue & Vibrant Orange identity:
+     Deep midnight cobalt base, architectural glass panels, angled micro-hatching,
+     and electric orange + royal blue ambient bloom */
+  .card-ink,
+  .card-emphasis {
+    position: relative;
+    background-color: #03061d;
+    background-image:
+      /* 1. Fine tactical diagonal pinstripe lines */
+      repeating-linear-gradient(
+        -45deg,
+        rgba(183, 219, 255, 0.05) 0px,
+        rgba(183, 219, 255, 0.05) 1px,
+        transparent 1px,
+        transparent 8px
+      ),
+      /* 2. Vertical architectural translucent glass slats / columns */
+      linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.02) 0%,
+        rgba(255, 255, 255, 0.02) 16%,
+        transparent 16%,
+        transparent 24%,
+        rgba(183, 219, 255, 0.05) 24%,
+        rgba(183, 219, 255, 0.05) 42%,
+        transparent 42%,
+        transparent 52%,
+        rgba(255, 255, 255, 0.02) 52%,
+        rgba(255, 255, 255, 0.02) 70%,
+        transparent 70%,
+        transparent 80%,
+        rgba(183, 219, 255, 0.04) 80%,
+        rgba(183, 219, 255, 0.04) 100%
+      ),
+      /* 3. Intense radiant electric orange glow bloom (from bottom right) */
+      radial-gradient(
+        circle at 92% 92%,
+        #ff6600 0%,
+        rgba(255, 102, 0, 0.85) 16%,
+        rgba(204, 82, 0, 0.55) 36%,
+        rgba(102, 41, 0, 0.28) 58%,
+        transparent 76%
+      ),
+      /* 4. Ambient electric royal blue & ice specular glow in top-left */
+      radial-gradient(
+        circle at 14% 14%,
+        rgba(0, 0, 153, 0.85) 0%,
+        rgba(183, 219, 255, 0.35) 25%,
+        rgba(0, 0, 100, 0.15) 50%,
+        transparent 70%
+      ),
+      /* 5. Base deep midnight cobalt vignette */
+      linear-gradient(180deg, #070c30 0%, #020414 100%);
+    border: 1px solid rgba(183, 219, 255, 0.2);
+    border-top: 1px solid rgba(183, 219, 255, 0.35);
+    color: #ffffff;
+    box-shadow:
+      inset 0 1px 1px 0 rgba(255, 255, 255, 0.25),
+      inset 0 0 24px 0 rgba(0, 0, 153, 0.3),
+      0 12px 32px -8px rgba(3, 6, 29, 0.7),
+      0 20px 48px -15px rgba(255, 102, 0, 0.35);
+  }
+
+  .card-ink.card-hover:hover,
+  .card-emphasis.card-hover:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 119, 26, 0.55);
+    border-top-color: rgba(183, 219, 255, 0.7);
+    box-shadow:
+      inset 0 1px 2px 0 rgba(255, 255, 255, 0.4),
+      inset 0 0 35px 0 rgba(255, 102, 0, 0.22),
+      0 16px 40px -8px rgba(3, 6, 29, 0.75),
+      0 26px 56px -12px rgba(255, 102, 0, 0.5);
+  }
+
+  /* Flame accent panel — Electric Vibrant Orange */
+  .card-flame {
+    background-color: #ff6600;
+    background-image: 
+      radial-gradient(circle at 0% 0%, #ff8533 0%, transparent 75%),
+      radial-gradient(circle at 100% 100%, #cc5200 0%, transparent 80%),
+      radial-gradient(circle at 100% 0%, #ff994d 0%, transparent 65%);
+    border: 1px solid #ff771a;
+    color: #ffffff;
+    box-shadow:
+      inset 0 1px 1px rgba(255, 255, 255, 0.35),
+      0 14px 28px rgba(255, 102, 0, 0.35);
+  }
+
+  /* Soft tinted surface — ice blue quiet stat/meta tiles */
+  .card-sky {
+    background-color: #f2f7fd;
+    background-image: 
+      radial-gradient(circle at 80% 20%, rgba(255, 102, 0, 0.06) 0%, transparent 50%),
+      radial-gradient(circle at 20% 80%, rgba(0, 0, 153, 0.05) 0%, transparent 50%);
+    border: 1px solid rgba(0, 0, 153, 0.08);
+    box-shadow: none;
+  }
+
+  .card-sky.card-hover:hover {
+    border-color: rgba(0, 0, 153, 0.18);
+    box-shadow:
+      0 2px 4px rgba(8, 13, 43, 0.03),
+      0 28px 48px -32px rgba(0, 0, 153, 0.15);
+  }
+
+  /* Bento interactive hover expansion */
+  .bento-card {
+    transition: flex 650ms cubic-bezier(0.16, 1, 0.3, 1), transform 500ms ease, box-shadow 500ms ease, border-color 500ms ease;
+    min-width: 0;
+  }
+
+  @media (min-width: 768px) {
+    .bento-card-wide {
+      flex: 2.15 1 0% !important;
+      min-width: 0;
+    }
+    .bento-card-compact {
+      flex: 1 1 0% !important;
+      min-width: 0;
+    }
+  }
+
+  /* ---- Buttons ---- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    border-radius: 12px;
+    padding: 0.85rem 1.4rem;
+    font-size: 0.95rem;
+    line-height: 1;
+    /* Fast, snappy spring transition */
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .btn:active {
+    transform: scale(0.96);
+  }
+
+  .btn-primary,
+  .btn-flame {
+    background-color: #ff6600 !important;
+    background-image: 
+      radial-gradient(circle at 0% 0%, #ff8533 0%, transparent 75%),
+      radial-gradient(circle at 100% 100%, #cc5200 0%, transparent 80%),
+      radial-gradient(circle at 100% 0%, #ff944d 0%, transparent 65%) !important;
+    color: #ffffff !important;
+    border: 1px solid #ff771a !important;
+    box-shadow:
+      inset 0 1px 1px rgba(255, 255, 255, 0.35),
+      0 4px 14px rgba(255, 102, 0, 0.32);
+  }
+
+  .btn-primary:hover,
+  .btn-flame:hover {
+    background-color: #e65c00 !important;
+    color: #ffffff !important;
+    box-shadow:
+      inset 0 1px 1px rgba(255, 255, 255, 0.15),
+      0 6px 22px rgba(255, 102, 0, 0.45);
+  }
+
+  .btn-ghost {
+    background: #ffffff;
+    color: #080d2b;
+    border: 1px solid rgba(0, 0, 153, 0.1);
+    box-shadow:
+      0 1px 2px rgba(8, 13, 43, 0.02),
+      0 2px 4px rgba(8, 13, 43, 0.02);
+  }
+
+  .btn-ghost:hover {
+    background: #f5f9fe;
+    border-color: rgba(0, 0, 153, 0.2);
+    box-shadow:
+      0 2px 4px rgba(8, 13, 43, 0.03),
+      0 4px 8px rgba(8, 13, 43, 0.03);
+  }
+
+  .btn-sm {
+    padding: 0.62rem 1.1rem;
+    font-size: 0.875rem;
+    border-radius: 12px;
+  }
+
+  .btn-md {
+    padding: 0.85rem 1.45rem;
+    font-size: 0.95rem;
+    border-radius: 12px;
+  }
+
+  /* ---- Micro-label pill ---- */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.7rem;
+    line-height: 1;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 153, 0.1);
+    background: #ffffff;
+    color: #080d2b;
+    box-shadow: 0 1px 2px rgba(8, 13, 43, 0.03);
+  }
+
+  .pill-flame {
+    background-color: #ff6600;
+    background-image: 
+      radial-gradient(circle at 0% 0%, #ff8533 0%, transparent 75%),
+      radial-gradient(circle at 100% 100%, #cc5200 0%, transparent 80%);
+    border-color: #ff771a;
+    color: #ffffff;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 2px 6px rgba(255, 102, 0, 0.25);
+  }
+
+  .pill-ink {
+    background: #000099;
+    border-color: #000077;
+    color: #ffffff;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2), 0 2px 8px rgba(0, 0, 153, 0.25);
+  }
+
+  .pill-ice {
+    background: #b7dbff;
+    border-color: #9ac7fa;
+    color: #000099;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.5);
+  }
+
+  /* Intentional emphasis: crisp vibrant electric orange underline beneath text */
+  .marker {
+    background-image: linear-gradient(90deg, #ff6600 0%, #ff8833 100%);
+    background-size: 100% 0.15em;
+    background-position: 0 98%;
+    background-repeat: no-repeat;
+    padding-bottom: 0.08em;
+    text-decoration: none;
+  }
+
+  /* Gradient headline accent */
+  .text-grad {
+    background-image: linear-gradient(100deg, #080d2b 8%, #000099 52%, #ff6600 96%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* ---- Atmosphere ---- */
+  .dot-grid {
+    background-image: radial-gradient(rgba(0, 0, 153, 0.12) 1.2px, transparent 1.2px);
+    background-size: 24px 24px;
+  }
+
+  .glow-flame {
+    position: relative;
+  }
+
+  .glow-flame::after {
+    content: "";
+    position: absolute;
+    inset: auto -20% -55% -20%;
+    height: 70%;
+    background: radial-gradient(60% 100% at 50% 100%, rgba(255, 102, 0, 0.45), transparent 70%);
+    filter: blur(24px);
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Nexa', sans-serif;
+  }
+
+  /* ---- Motion ---- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+    animation: reveal-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: var(--reveal-delay, 0ms);
+  }
+
+  @keyframes reveal-up {
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .fade-in {
+    animation: fade-in 0.4s ease forwards;
+    opacity: 0;
+  }
+
+  @keyframes fade-in {
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* ---- Hero motion ---- */
+  .hero-spin {
+    animation: hero-spin 60s linear infinite;
+  }
+  .hero-spin-rev {
+    animation: hero-spin 22s linear infinite reverse;
+  }
+  @keyframes hero-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .hero-marquee {
+    animation: hero-marquee 38s linear infinite;
+  }
+  @keyframes hero-marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .hero-underline path {
+    stroke-dasharray: 320;
+    stroke-dashoffset: 320;
+    animation: hero-draw 0.9s cubic-bezier(0.65, 0, 0.35, 1) 0.6s forwards;
+  }
+  @keyframes hero-draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+    .fade-in {
+      opacity: 1;
+      animation: none;
+    }
+    .hero-spin,
+    .hero-spin-rev,
+    .hero-marquee {
+      animation: none;
+    }
+    .hero-underline path {
+      animation: none;
+      stroke-dashoffset: 0;
+    }
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
