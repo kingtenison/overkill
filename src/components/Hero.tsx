@@ -29,7 +29,7 @@ export default function Hero() {
   return (
     <section
       aria-labelledby="hero-title"
-      className="relative w-full lg:h-[calc(100vh-68px)] flex flex-col justify-between overflow-hidden"
+      className="relative w-full h-[calc(100dvh-68px)] lg:h-[calc(100vh-68px)] flex flex-col justify-between overflow-hidden"
     >
       {/* ── Atmosphere ─────────────────────────────── */}
       <div
@@ -56,12 +56,12 @@ export default function Hero() {
       />
 
       {/* ── Main Content Area ──────────────────────── */}
-      <div className="relative flex-1 min-h-0 flex items-center w-full px-4 sm:px-6 md:px-10 lg:px-14 xl:px-20 mx-auto py-6 sm:py-8 lg:py-2 xl:py-4">
-        <div className="grid w-full grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
+      <div className="relative flex-1 min-h-0 flex items-center w-full px-4 sm:px-6 md:px-10 lg:px-14 xl:px-20 mx-auto py-2.5 sm:py-6 lg:py-2 xl:py-4">
+        <div className="grid w-full grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-8 lg:gap-8 items-center">
           {/* Copy Column (contains text, mobile image between text and buttons, buttons, and metrics) */}
           <div className="lg:col-span-7 relative z-10">
             {/* 01: Hero Text — Pill */}
-            <span className="pill text-[0.8rem] lg:text-[0.95rem] reveal" style={d(0)}>
+            <span className="pill text-[0.75rem] sm:text-[0.8rem] lg:text-[0.95rem] reveal" style={d(0)}>
               <span className="relative flex w-2 h-2 lg:w-2.5 lg:h-2.5">
                 <span className="absolute inline-flex w-full h-full rounded-full bg-flame opacity-75 animate-ping" />
                 <span className="relative inline-flex w-2 h-2 lg:w-2.5 lg:h-2.5 rounded-full bg-flame" />
@@ -72,7 +72,7 @@ export default function Hero() {
             {/* 01: Hero Text — Headline */}
             <h1
               id="hero-title"
-              className="mt-3.5 lg:mt-2.5 xl:mt-3 font-display font-extrabold text-ink tracking-[-0.045em] leading-[1.04] text-[2.5rem] sm:text-[3.25rem] lg:text-[3.5rem] xl:text-[4.25rem] 2xl:text-[4.85rem] reveal"
+              className="mt-2 sm:mt-3.5 lg:mt-2.5 xl:mt-3 font-display font-extrabold text-ink tracking-[-0.045em] leading-[1.04] text-[1.95rem] xs:text-[2.25rem] sm:text-[3.25rem] lg:text-[3.5rem] xl:text-[4.25rem] 2xl:text-[4.85rem] reveal"
               style={d(90)}
             >
               Turn technology into{" "}
@@ -98,7 +98,7 @@ export default function Hero() {
 
             {/* 01: Hero Text — Subtitle */}
             <p
-              className="mt-3 lg:mt-2.5 xl:mt-3.5 text-[1.05rem] sm:text-[1.25rem] lg:text-[1.35rem] xl:text-[1.5rem] text-ink/80 leading-relaxed max-w-[36rem] lg:max-w-[46rem] xl:max-w-[50rem] font-medium reveal"
+              className="mt-2 sm:mt-3 lg:mt-2.5 xl:mt-3.5 text-[0.92rem] sm:text-[1.25rem] lg:text-[1.35rem] xl:text-[1.5rem] text-ink/80 leading-snug sm:leading-relaxed max-w-[36rem] lg:max-w-[46rem] xl:max-w-[50rem] font-medium reveal"
               style={d(180)}
             >
               We build custom software and digital systems that{" "}
@@ -108,8 +108,8 @@ export default function Hero() {
             </p>
 
             {/* 02: Mobile-Only Big Hero Image (In Between Hero Text and CTA Buttons) */}
-            <div className="lg:hidden my-6 sm:my-8 flex items-center justify-center">
-              <div className="relative mx-auto w-full max-w-[320px] sm:max-w-[400px] aspect-square">
+            <div className="lg:hidden my-2 sm:my-3.5 flex items-center justify-center">
+              <div className="relative mx-auto w-[clamp(125px,21vh,190px)] h-[clamp(125px,21vh,190px)] aspect-square">
                 {/* Rotating hex rings */}
                 <svg
                   aria-hidden
@@ -141,13 +141,13 @@ export default function Hero() {
 
             {/* 03: CTA Buttons — Side-by-side on mobile and desktop */}
             <div
-              className="flex flex-row items-center gap-2.5 sm:gap-3 mt-6 lg:mt-4 xl:mt-6 reveal"
+              className="flex flex-row items-center gap-2.5 sm:gap-3 mt-3 sm:mt-5 lg:mt-4 xl:mt-6 reveal"
               style={d(260)}
             >
               <Link
                 href="/start-a-project"
                 id="hero-start-project"
-                className="btn btn-primary text-xs sm:text-base px-3.5 sm:px-7 py-3 sm:py-3.5 flex-1 sm:flex-none justify-center whitespace-nowrap"
+                className="btn btn-primary text-xs sm:text-base px-3.5 sm:px-7 py-2.5 sm:py-3.5 flex-1 sm:flex-none justify-center whitespace-nowrap"
               >
                 <span>Start a project</span>
                 <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -155,7 +155,7 @@ export default function Hero() {
               <Link
                 href="/work"
                 id="hero-see-work"
-                className="btn btn-ghost text-xs sm:text-base px-3.5 sm:px-7 py-3 sm:py-3.5 flex-1 sm:flex-none justify-center whitespace-nowrap"
+                className="btn btn-ghost text-xs sm:text-base px-3.5 sm:px-7 py-2.5 sm:py-3.5 flex-1 sm:flex-none justify-center whitespace-nowrap"
               >
                 <span>See the work</span>
                 <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-flame" />
@@ -164,16 +164,16 @@ export default function Hero() {
 
             {/* 04: The Rest — Proof Metrics */}
             <dl
-              className="mt-7 lg:mt-4 xl:mt-6 grid grid-cols-3 max-w-lg lg:max-w-xl xl:max-w-2xl divide-x divide-ink/15 reveal"
+              className="mt-3.5 sm:mt-5 lg:mt-4 xl:mt-6 grid grid-cols-3 max-w-lg lg:max-w-xl xl:max-w-2xl divide-x divide-ink/15 reveal"
               style={d(340)}
             >
               {proof.map(({ value, label }) => (
-                <div key={label} className="px-2.5 sm:px-4 lg:px-5 first:pl-0">
+                <div key={label} className="px-2 sm:px-4 lg:px-5 first:pl-0">
                   <dt className="sr-only">{label}</dt>
-                  <dd className="font-display font-extrabold text-[1.45rem] sm:text-[1.95rem] lg:text-[2.06rem] xl:text-[2.56rem] text-ink tracking-tight leading-none">
+                  <dd className="font-display font-extrabold text-[1.25rem] xs:text-[1.4rem] sm:text-[1.95rem] lg:text-[2.06rem] xl:text-[2.56rem] text-ink tracking-tight leading-none">
                     {value}
                   </dd>
-                  <dd className="mt-1 text-[10px] sm:text-[12px] lg:text-[14px] xl:text-[15px] font-bold uppercase tracking-[0.14em] text-ink/55">
+                  <dd className="mt-1 text-[9px] xs:text-[10px] sm:text-[12px] lg:text-[14px] xl:text-[15px] font-bold uppercase tracking-[0.14em] text-ink/55">
                     {label}
                   </dd>
                 </div>
@@ -240,7 +240,7 @@ export default function Hero() {
               {ticker.map((t) => (
                 <li
                   key={`${dup}-${t}`}
-                  className="flex items-center gap-6 px-6 py-3 font-display font-semibold text-xs sm:text-sm md:text-base tracking-tight whitespace-nowrap"
+                  className="flex items-center gap-6 px-6 py-2.5 sm:py-3 font-display font-semibold text-xs sm:text-sm md:text-base tracking-tight whitespace-nowrap"
                 >
                   {t}
                   <span className="text-flame text-lg leading-none font-bold">✦</span>
