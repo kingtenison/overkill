@@ -5,7 +5,6 @@ import Link from "next/link";
 import { PRICING_TIERS, FAQS } from "@/data/content";
 import {
   ArrowRight,
-  ArrowUpRight,
   Check,
   ShieldCheck,
   Layers,
@@ -13,8 +12,6 @@ import {
   Lock,
   Clock,
   ChevronDown,
-  Sparkles,
-  Zap,
 } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import FinalCTA from "@/components/FinalCTA";

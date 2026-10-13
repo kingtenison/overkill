@@ -104,7 +104,7 @@ export default function Footer() {
             <span className="w-4 h-4 rounded-full bg-[#FF6600]" title="#FF6600 (Electric Orange)" />
           </div>
           <a
-            href="http://portfolio-roan-six-92.vercel.app/"
+            href="https://portfolio-roan-six-92.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1 hover:text-flame transition-colors font-semibold"

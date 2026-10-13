@@ -16,8 +16,6 @@ import {
   TrendingUp,
   Layers,
   Lock,
-  ShieldCheck,
-  CheckCircle2,
 } from "lucide-react";
 import FinalCTA from "@/components/FinalCTA";
 
@@ -44,7 +42,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   return {
-    title: `${study.title} — Case Study | =[ØVĒRKILL]= STUDIOS`,
+    title: `${study.title} — Case Study`,
     description: `${study.subtitle}. ${study.headlineOutcome}`,
   };
 }

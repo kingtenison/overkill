@@ -7,17 +7,15 @@ import {
   Layers,
   ShieldCheck,
   ArrowRight,
-  ArrowUpRight,
   AlertTriangle,
   CheckCircle2,
-  Sparkles,
 } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import FinalCTA from "@/components/FinalCTA";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Who We Help | =[ØVĒRKILL]= STUDIOS",
+  title: "Who We Help",
   description:
     "Stages and sectors we build for — first-site velocity, scaling operations, modernizing legacy tools and regulated practices.",
 };

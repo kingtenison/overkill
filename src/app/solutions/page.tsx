@@ -8,7 +8,6 @@ import {
   Sparkles,
   RefreshCw,
   ArrowRight,
-  ArrowUpRight,
   CheckCircle2,
   AlertCircle,
   Zap,
@@ -20,7 +19,7 @@ import FinalCTA from "@/components/FinalCTA";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Solutions & Services | =[ØVĒRKILL]= STUDIOS",
+  title: "Solutions & Services",
   description:
     "Five ways we build: websites & stores, business systems, web apps & products, automation & AI, and modernization of legacy systems.",
 };

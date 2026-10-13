@@ -20,6 +20,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://overkillstudios.com"),
   title: {
     default: "=[ØVĒRKILL]= STUDIOS | We build the digital system your business needs",
     template: "%s | =[ØVĒRKILL]= STUDIOS",
@@ -41,7 +42,34 @@ export const metadata: Metadata = {
       "Websites, business systems, and automation built around how your business actually works.",
     url: "https://overkillstudios.com",
     siteName: "OVERKILL Studios",
+    locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/hero-logo.png",
+        width: 1200,
+        height: 630,
+        alt: "=[ØVĒRKILL]= STUDIOS — Turn technology into your unfair advantage.",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "=[ØVĒRKILL]= STUDIOS | Digital Solutions Company",
+    description:
+      "Websites, business systems, and automation built around how your business actually works.",
+    images: ["/hero-logo.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 

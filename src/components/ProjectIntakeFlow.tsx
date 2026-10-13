@@ -9,20 +9,10 @@ import {
   Check,
   Send,
   ShieldCheck,
+  Loader2,
+  AlertCircle,
 } from "lucide-react";
-
-interface FormData {
-  goal: string;
-  problemDescription: string;
-  audience: string;
-  stage: string;
-  timeline: string;
-  successMetric: string;
-  name: string;
-  email: string;
-  organization: string;
-  phone: string;
-}
+import { submitProjectIntake, type IntakeFormData } from "@/app/actions/intake";
 
 const NEXT_STEPS = [
   {
@@ -50,8 +40,10 @@ export default function ProjectIntakeFlow({
 }) {
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const [form, setForm] = useState<FormData>({
+  const [form, setForm] = useState<IntakeFormData>({
     goal: initialPackage ? `Selected package: ${initialPackage.toUpperCase()}` : "",
     problemDescription: "",
     audience: "",
@@ -103,9 +95,30 @@ export default function ProjectIntakeFlow({
     "Not sure yet",
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    if (!form.name?.trim() || !form.email?.trim() || isSubmitting) return;
+
+    setIsSubmitting(true);
+    setErrorMessage(null);
+
+    try {
+      const res = await submitProjectIntake(form);
+      if (res.success) {
+        setSubmitted(true);
+      } else {
+        setErrorMessage(
+          res.error ||
+            "Unable to submit at this moment. Please check your details or email kingtenison@gmail.com directly."
+        );
+      }
+    } catch {
+      setErrorMessage(
+        "Network connection failed. Please check your internet or reach out directly at kingtenison@gmail.com."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const optionClass = (active: boolean) =>
@@ -481,9 +494,27 @@ export default function ProjectIntakeFlow({
             </div>
 
             <div className="p-3.5 rounded-2xl bg-sky-tint border border-ink/10 text-xs font-semibold text-ink flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-ink shrink-0" />
+              <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
               <span>Strict privacy. No spam, no unsolicited sales calls.</span>
             </div>
+
+            {errorMessage && (
+              <div className="p-4 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-start gap-3">
+                <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+                <div className="space-y-1">
+                  <p className="font-bold">{errorMessage}</p>
+                  <p className="text-[11px] text-red-600/80">
+                    You can also reach Hansen directly via{" "}
+                    <a
+                      href={`mailto:kingtenison@gmail.com?subject=Project%20Intake%20-%20${encodeURIComponent(form.name || "Client")}`}
+                      className="underline font-bold"
+                    >
+                      kingtenison@gmail.com
+                    </a>
+                  </p>
+                </div>
+              </div>
+            )}
 
             <div className="pt-4 flex items-center justify-between">
               <button
@@ -496,11 +527,20 @@ export default function ProjectIntakeFlow({
               </button>
               <button
                 type="submit"
-                disabled={!form.name || !form.email}
-                className="btn btn-primary disabled:opacity-40"
+                disabled={!form.name?.trim() || !form.email?.trim() || isSubmitting}
+                className="btn btn-primary disabled:opacity-40 flex items-center gap-2"
               >
-                <span>Send intake</span>
-                <Send className="w-4 h-4" />
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin text-white" />
+                    <span>Sending intake...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Send intake</span>
+                    <Send className="w-4 h-4" />
+                  </>
+                )}
               </button>
             </div>
           </div>

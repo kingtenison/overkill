@@ -9,12 +9,7 @@ import {
   TrendingUp,
   ArrowRight,
   ArrowUpRight,
-  ShieldCheck,
-  Clock,
   CheckCircle2,
-  Sparkles,
-  Layers,
-  Zap,
 } from "lucide-react";
 import { PROCESS_STAGES } from "@/data/content";
 import PageHero from "@/components/PageHero";
@@ -22,7 +17,7 @@ import FinalCTA from "@/components/FinalCTA";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Our Process | =[ØVĒRKILL]= STUDIOS",
+  title: "Our Process",
   description:
     "From problem to launch in six clear stages — discover, understand, design, build, launch, evolve. No black boxes, no 30-page briefs.",
 };

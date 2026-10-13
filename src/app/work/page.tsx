@@ -11,10 +11,6 @@ import {
   Lock,
   CheckCircle2,
   AlertCircle,
-  ExternalLink,
-  Sparkles,
-  ShieldCheck,
-  Zap,
 } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import FinalCTA from "@/components/FinalCTA";

@@ -7,17 +7,13 @@ import {
   ShieldCheck,
   ArrowUpRight,
   ArrowRight,
-  Sparkles,
-  Zap,
-  Cpu,
-  Code2,
 } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import FinalCTA from "@/components/FinalCTA";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About the Studio | =[ØVĒRKILL]= STUDIOS",
+  title: "About the Studio",
   description:
     "We build websites, business systems and automation around how your business actually works. You describe the problem — we handle the tech.",
 };

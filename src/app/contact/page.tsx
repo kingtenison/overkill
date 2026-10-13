@@ -16,7 +16,7 @@ import FinalCTA from "@/components/FinalCTA";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Us | =[ØVĒRKILL]= STUDIOS",
+  title: "Contact Us",
   description:
     "Tell us what's slow, broken or stuck. Every inquiry gets a reply within 24 hours on business days.",
 };

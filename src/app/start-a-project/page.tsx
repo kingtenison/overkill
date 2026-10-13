@@ -1,11 +1,11 @@
 import React from "react";
 import ProjectIntakeFlow from "@/components/ProjectIntakeFlow";
-import { ShieldCheck, Clock, Sparkles, CheckCircle2, Lock, ArrowRight } from "lucide-react";
+import { ShieldCheck, Clock, Sparkles } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Start a Project | =[ØVĒRKILL]= STUDIOS",
+  title: "Start a Project",
   description:
     "No 20-page specification. Four short steps — goal, problem, context, contact — and we'll map the solution with you.",
 };
